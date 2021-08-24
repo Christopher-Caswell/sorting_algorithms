@@ -9,26 +9,30 @@
 
 void bubble_sort(int *array, size_t size)
 {
-    size_t x;
-    int temp;
-    bool juxtapose = true;
 
-    if (!array || size <= 1)
-        return;
+size_t x;
+int temp;
+bool juxtapose = true;
 
-    while (juxtapose)
-    {
-        juxtapose = false;
-        for (x = 0; x < size; x++)
-        {
-            if (x < size - 1 && array[x] > array[x + 1])
-            {
-                temp = array[x];
-                array[x] = array[x + 1];
-                array[x + 1] = temp;
-                juxtapose = true;
-                print_array(array, size);
-            }
-        }
-    }
+if (!array || size <= 1)
+return;
+
+while (juxtapose)
+{
+
+juxtapose = false;
+for (x = 0; x < size; x++)
+{
+
+if (x < size - 1 && array[x] > array[x + 1])
+{
+
+temp = array[x];
+array[x] = array[x + 1];
+array[x + 1] = temp;
+juxtapose = true;
+print_array(array, size);
+}
+}
+}
 }
