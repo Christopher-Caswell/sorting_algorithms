@@ -4,7 +4,7 @@
 * bubble_sort - sort an array of integers using bubble sort algorithm
 * @array: array size
 * @size: the size of the array
-* @return: sorted array of integers
+* Return: sorted array of integers
 */
 
 void bubble_sort(int *array, size_t size)
