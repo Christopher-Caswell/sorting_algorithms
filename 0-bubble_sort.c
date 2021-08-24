@@ -1,28 +1,27 @@
 #include "sort.h"
 
 /*
-* Bubble sort
+* bubble_sort - sort an array of integers using bubble sort algorithm
 * @array: array size
-* @size: 
+* @size: the size of the array
 * @return: sorted array of integers
 */
 
 void bubble_sort(int *array, size_t size)
 {
-    size_t x, y;
+    size_t x;
     int temp;
     bool juxtapose = true;
 
     if (!array || size <= 1)
         return;
 
-    y = size;
     while (juxtapose)
     {
         juxtapose = false;
-        for (x = 0; x < y; x++)
+        for (x = 0; x < size; x++)
         {
-            if (array[x] > array[x + 1])
+            if (x < size - 1 && array[x] > array[x + 1])
             {
                 temp = array[x];
                 array[x] = array[x + 1];
@@ -31,6 +30,5 @@ void bubble_sort(int *array, size_t size)
                 print_array(array, size);
             }
         }
-        y--;
     }
 }
