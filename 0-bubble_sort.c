@@ -7,13 +7,13 @@
 * @return: sorted array of integers
 */
 
-void bubble_sort(int *array, size_t size);
+void bubble_sort(int *array, size_t size)
 {
     size_t x, y;
     int temp;
     bool juxtapose = true;
 
-    for (!array || size <= 1)
+    if (!array || size <= 1)
         return;
 
     y = size;
