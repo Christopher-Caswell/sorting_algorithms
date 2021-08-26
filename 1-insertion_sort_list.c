@@ -45,7 +45,7 @@ while (tmp)
 if (node->n > tmp->n)
 {
 
-swap(node, tmp);
+juxtapose(node, tmp);
 if (!tmp->prev)
 *list = tmp;
 print_list(*list);
@@ -54,7 +54,7 @@ prev = tmp->prev;
 while (prev && prev->n > tmp->n)
 {
 
-swap(prev, tmp);
+juxtapose(prev, tmp);
 if (!tmp->prev)
 *list = tmp;
 print_list(*list);
