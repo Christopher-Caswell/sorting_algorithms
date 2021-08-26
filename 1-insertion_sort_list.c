@@ -1,45 +1,69 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list - sorts a doubly linked list of integers
+ * juxtapose - juxtapose two nodes
  *
- * @list: doubly linked list of integers
+ * @n1: node;
+ *
+ * @n2: node;
  *
  * Return: void
  */
+void juxtapose(listint_t *n1, listint_t *n2)
+{
 
+n2->prev = n1->prev;
+if (n2->prev)
+n2->prev->next = n2;
+n1->prev = n2;
+n1->next = n2->next;
+if (n1->next)
+n1->next->prev = n1;
+n2->next = n1;
+}
+
+/**
+ * insertion_sort_list - Sort doubly linked ints
+ *
+ * @list: list to sort
+ *
+ * Return: void
+ */
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *frnt, *nxt, *new, *tmp;
+listint_t *node, *tmp, *prev;
 
-    if (list == NULL || *list == NULL || (*list)->next == NULL)
-        return;
+if (!list)
+return;
 
-    nxt = *list;
-    frnt = nxt->next;
+node = *list;
+tmp = node->next;
 
-    while (frnt != NULL)
-    {
-        new = frnt->next;
-        if (frnt->n < nxt->n)
-        {
-            if (nxt->prev != NULL)
-                nxt->prev->next = frnt;
-            else
-                *list = frnt;
-            if (frnt->next != NULL)
-                frnt->next->prev = nxt;
-            tmp = frnt->next;
-            frnt->next = nxt;
-            frnt->prev = nxt->prev;
-            nxt->next = tmp;
-            nxt->prev = frnt;
-            print_list(*list);
-            nxt = frnt;
-        }
+while (tmp)
+{
 
-        frnt = new;
-        if (frnt)
-            nxt = frnt->prev;
-    }
+if (node->n > tmp->n)
+{
+
+swap(node, tmp);
+if (!tmp->prev)
+*list = tmp;
+print_list(*list);
+prev = tmp->prev;
+
+while (prev && prev->n > tmp->n)
+{
+
+swap(prev, tmp);
+if (!tmp->prev)
+*list = tmp;
+print_list(*list);
+prev = tmp->prev;
+}
+}
+
+else
+node = tmp;
+tmp = node->next;
+}
 }
